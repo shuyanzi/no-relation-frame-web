@@ -1,9 +1,8 @@
-# 创建项目
-npx create-react-app example/react-app
-yarn workspace react-app start
+# 创建demo项目
+npx create-react-app example/react-app-demo
+# 启动demo项目
+yarn workspace react-app-demo start
 
-npx create-react-app example/react-app-ts --scripts-version=react-scripts-ts
-yarn workspace react-app-ts start
 
 # 安装包
 yarn workspace packageA add axios
