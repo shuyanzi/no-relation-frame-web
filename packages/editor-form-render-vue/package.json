@@ -1,0 +1,21 @@
+{
+  "name": "@atome/editor-form-render-vue",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "buildOptions": {
+    "formats": [
+      "esm"
+    ]
+  },
+  "keywords": [
+    "atome"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {}
+}
