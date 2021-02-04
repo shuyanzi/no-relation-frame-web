@@ -17,5 +17,8 @@
   ],
   "author": "",
   "license": "MIT",
+  "dependencies": {
+    "vue": "^3.0.0"
+  },
   "devDependencies": {}
 }

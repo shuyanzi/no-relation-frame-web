@@ -9,6 +9,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@vue/cli-plugin-babel": "^4.5.11",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-typescript2": "^0.29.0",
     "typescript": "^3.9.7",

@@ -89,7 +89,7 @@ function createConfig(format, output, plugins = []) {
             }
             
           ],
-          '@babel/preset-react'
+          '@vue/cli-plugin-babel/preset'
         ],
         plugins: [
           [
