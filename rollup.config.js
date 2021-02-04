@@ -1,6 +1,7 @@
 import path from 'path'
 import typescript from 'rollup-plugin-typescript2'
 import babel from 'rollup-plugin-babel'
+import commonjs from 'rollup-plugin-commonjs';
 
 if (!process.env.TARGET) {
   throw new Error('TARGET package must be specified via --environment flag.')
@@ -101,7 +102,8 @@ function createConfig(format, output, plugins = []) {
           ],
           '@babel/plugin-proposal-class-properties'
         ]
-      })
+      }),
+      commonjs()
     ]
   }
 }

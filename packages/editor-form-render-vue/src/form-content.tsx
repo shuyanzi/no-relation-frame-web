@@ -1,14 +1,14 @@
 import { computed, defineComponent, PropType } from 'vue';
+import { ModelValue } from './interfaces/model-value';
 // import { BlockData, ModelValue } from './interfaces/model-value';
-// import { ModelValue } from './interfaces/model-value';
 // import { VisualEditorConfig } from './lib/utils';
-// import { FormBlock } from './packages/form-block';
+import { FormBlock } from './packages/form-block';
+import { visualConfig } from './lib/config';
 
 const FormContent = defineComponent({
   name: 'AFormContent',
   props: {
-    // modelValue: {type: Object as PropType<ModelValue>, required: true},
-    modelValue: {type: Object, required: true},
+    modelValue: {type: Object as PropType<ModelValue>, required: true},
     // config: {type: Object as PropType<VisualEditorConfig>, required: true},
   },
   setup(props, { slots }) {
@@ -29,11 +29,18 @@ const FormContent = defineComponent({
       return (
         <div class={classString.value} style={containerStyles.value}>
           vue component 来了~~~~
-          {/* {!!modelValue.blocks && (
+          {!!modelValue.blocks && (
             modelValue.blocks.map((block, index) => (
-              <div>{index}</div>
+              <FormBlock
+                config={visualConfig}
+                block={block}
+                key={index}
+                // {...{
+                //     onMousedown: (e: MouseEvent) => focusHandler.block.onMousedown(e, block)
+                // }}
+              />
             ))
-          )} */}
+          )}
         </div>
       );
     };
