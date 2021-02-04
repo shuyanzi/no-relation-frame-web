@@ -1,14 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import a from '@atome/editor-form-render-vue'
+import jsonData from './data.json'
 
 
 function App() {
   setTimeout(() => {
-    a.mount('vue-content')
-    setTimeout(() => {
-      a.app.unmount()
-    }, 2000)
+    a.mount('vue-content', jsonData)
+    // setTimeout(() => {
+    //   a.app.unmount()
+    // }, 2000)
   }, 2000)
 
   return (

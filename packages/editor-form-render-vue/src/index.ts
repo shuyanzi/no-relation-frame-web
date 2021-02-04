@@ -1,28 +1,25 @@
 import { createApp } from 'vue'
-import App from './App'
+import FormContent from './form-content'
+// import ElementPlus from 'element-plus';
+// import 'element-plus/lib/theme-chalk/index.css';
+// import { ModelValue } from './interfaces/model-value';
 
-// const app = createApp(App);
-// app.use(ElementPlus);
-// app.mount('#app')
-
-
-
-const aa: any = {
+const vueEditForm: any = {
   app: null,
-  mount: (elem: any) => {
+  // mount: (elem: any, modelValue: ModelValue) => {
+  mount: (elem: any, modelValue: any) => {
     if (document.getElementById(elem)?.innerHTML) {
       return
     }
-    const app = createApp(App);
-    aa.app = app
-    // // window.vue = app
-    // // app.use(ElementPlus);
+    const app = createApp(FormContent, { modelValue });
+    vueEditForm.app = app
+    // app.use(ElementPlus);
     app.mount(`#${elem}`)
   },
   unmount: () => {
-    if (aa.app) {
-      aa.app.unmount()
+    if (vueEditForm.app) {
+      vueEditForm.app.unmount()
     }
   }
 }
-export default aa
+export default vueEditForm
