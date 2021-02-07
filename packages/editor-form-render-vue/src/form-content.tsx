@@ -15,19 +15,13 @@ const FormContent = defineComponent({
     const { modelValue } = props
     const containerStyles = computed(() => ({
       width: `${modelValue.container.width}px`,
-      height: `${modelValue.container.height}px`,
+      height: `${modelValue.container.height}px`
     }))
     console.log({ modelValue })
 
-    const classString = computed(() => {
-      return {
-        show: true,
-      };
-    });
-
     return () => {
       return (
-        <div class={classString.value} style={containerStyles.value}>
+        <div class='form-container' style={containerStyles.value}>
           vue component 来了~~~~
           {!!modelValue.blocks && (
             modelValue.blocks.map((block, index) => (

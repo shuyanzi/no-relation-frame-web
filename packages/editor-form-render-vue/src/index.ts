@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
 import FormContent from './form-content'
-// import ElementPlus from 'element-plus';
-// import 'element-plus/lib/theme-chalk/index.css';
+import ElementPlus from 'element-plus';
+import 'element-plus/lib/theme-chalk/index.css';
+// import './styles/index.scss';
 // import { ModelValue } from './interfaces/model-value';
 
 const vueEditForm: any = {
@@ -13,7 +14,7 @@ const vueEditForm: any = {
     }
     const app = createApp(FormContent, { modelValue });
     vueEditForm.app = app
-    // app.use(ElementPlus);
+    app.use(ElementPlus);
     app.mount(`#${elem}`)
   },
   unmount: () => {

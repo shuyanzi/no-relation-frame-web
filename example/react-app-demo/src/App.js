@@ -1,25 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
-import a from '@atome/editor-form-render-vue'
+import vueForm from '@atome/editor-form-render-vue'
 import jsonData from './data.json'
 
-
+function mountVue() {
+  vueForm?.mount('vue-content', jsonData)
+}
+function unmountVue() {
+  vueForm?.app?.unmount()
+}
 function App() {
-  setTimeout(() => {
-    a.mount('vue-content', jsonData)
-    // setTimeout(() => {
-    //   a.app.unmount()
-    // }, 2000)
-  }, 2000)
 
   return (
     <div className="App">
       <header className="App-header">
         React Wrap
         <img src={logo} className="App-logo" alt="logo" />
+        <button onClick={mountVue}>挂载vue组件</button>
+        <button onClick={unmountVue}>销毁vue组件</button>
         <div className="vue-container">
-          <p>2s后挂载vue组件</p>
-          <p>再2s后销毁vue组件，😄</p>
           <div id="vue-content"></div>
         </div>
       </header>

@@ -3,6 +3,7 @@ import { BlockData } from '../interfaces/model-value';
 import {
   VisualEditorConfig
 } from '../lib/utils';
+import { ElButton, ElInput } from 'element-plus';
 
 export const FormBlock = defineComponent({
   name: 'FormBlock',
@@ -50,6 +51,8 @@ export const FormBlock = defineComponent({
       return (
         <div class={classes.value} style={style.value} ref={el}>
           {Render}
+          <ElButton>按钮</ElButton>
+          <ElInput/>
         </div>
       );
     };

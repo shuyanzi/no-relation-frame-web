@@ -18,7 +18,11 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "element-plus": "^1.0.2-beta.31",
     "vue": "^3.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "sass": "^1.32.6",
+    "sass-loader": "^10.1.1"
+  }
 }
