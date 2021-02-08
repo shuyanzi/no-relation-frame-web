@@ -1,5 +1,5 @@
 import { createVisualEditorConfig } from "./utils";
-import { ElButton, ElInput as Input, ElOption, ElSelect } from "element-plus";
+import { ElButton, ElInput as Input, ElOption, ElSelect, ElTimePicker, ElInputNumber } from "element-plus";
 import {
   createEditorColorProps,
   createEditorInputProps,
@@ -67,10 +67,36 @@ visualConfig.registry("button", {
   },
 });
 
+visualConfig.registry("number", {
+  label: "number",
+  preview: () => <ElInputNumber />,
+  render: ({ model, size, custom }) => {
+    return (
+      <ElInputNumber
+        {...custom}
+        {...model.default}
+        style={{ width: size.width ? `${size.width}px` : undefined }}
+      />
+    );
+  },
+  resize: { width: true },
+  model: {
+    default: "绑定字段",
+  },
+  props: {
+    size: createEditorSelectProps("输入框大小", [
+      { label: "默认", val: "" },
+      { label: "中等", val: "medium" },
+      { label: "小", val: "small" },
+      { label: "极小", val: "mini" },
+    ]),
+  },
+});
 visualConfig.registry("input", {
   label: "输入框",
   preview: () => <ElInput modelValue={""} />,
   render: ({ model, size, custom }) => {
+    console.log('input:', model.default)
     return (
       <ElInput
         {...custom}
@@ -96,8 +122,9 @@ visualConfig.registry("input", {
 visualConfig.registry("select", {
   label: "下拉框",
   preview: () => <ElSelect></ElSelect>,
-  render: ({ props, model, custom }) => (
-    <ElSelect key={Math.random()} {...custom} {...model.default}>
+  render: ({ props, model, custom }) => {
+    console.log('select:', custom, model)
+    return <ElSelect key={Math.random()} {...custom} {...model.default}>
       {(props.options || []).map(
         (
           opt: {
@@ -110,7 +137,7 @@ visualConfig.registry("select", {
         )
       )}
     </ElSelect>
-  ),
+  },
   props: {
     options: createEditorTableProp("下拉选项", {
       options: [
@@ -135,9 +162,9 @@ visualConfig.registry("number-range", {
       style={{ width: size.width ? `${size.width}px` : undefined }}
       {...{
         start: model.start.value,
-        "onUpdate:start": model.start.onChange,
+        "update:start": model.start.onChange,
         end: model.end.value,
-        "onUpdate:end": model.end.onChange,
+        "update:end": model.end.onChange,
       }}
     />
   ),
@@ -166,12 +193,32 @@ visualConfig.registry("image", {
       }}
       class="visual-block-image"
     >
-      <img src={props.url || "https://cn.vuejs.org/images/logo.png"} />
+      <img src={props.url} />
     </div>
   ),
   props: {
     url: createEditorInputProps("地址"),
   },
+});
+visualConfig.registry("datepicker", {
+    label: "时间选择",
+    preview: () => <ElTimePicker></ElTimePicker>,
+    render: ({ props, model, custom }) => (
+      <ElTimePicker key={Math.random()} {...custom} {...model.default}></ElTimePicker>
+    ),
+    props: {
+      options: createEditorTableProp("下拉选项", {
+        options: [
+          { label: "显示值", field: "label" },
+          { label: "绑定值", field: "value" },
+          { label: "备注", field: "remark" },
+        ],
+        showKey: "label",
+      }),
+    },
+    model: {
+      default: "绑定字段",
+    },
 });
 
 export default visualConfig;

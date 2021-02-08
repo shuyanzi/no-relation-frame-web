@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { createApp, reactive } from 'vue'
 import FormContent from './form-content'
 import ElementPlus from 'element-plus';
 import 'element-plus/lib/theme-chalk/index.css';
@@ -6,26 +6,27 @@ import './styles/index.scss';
 import { ModelValue } from './interfaces/model-value';
 
 const vueEditForm: any = {
-  app: null,
   mount: (elem: any, data: {
     modelValue: ModelValue,
     formData: Record<string, any>,
     customProps: Record<string, any>,
-  }) => {
+  }, forceUpdate = false) => {
     if (document.getElementById(elem)?.innerHTML) {
       console.log('this element has mounted!')
-      return
+      if (forceUpdate) {
+        console.log('this element forceUpdate!')
+        vueEditForm[elem]?.unmount()
+      } else {
+        return
+      }
     }
-    console.log({ data })
     const app = createApp(FormContent, data);
-    vueEditForm.app = app
+    vueEditForm[elem] = app
     app.use(ElementPlus);
     app.mount(`#${elem}`)
   },
-  unmount: () => {
-    if (vueEditForm.app) {
-      vueEditForm.app.unmount()
-    }
+  unmount: (elem: any) => {
+    vueEditForm[elem]?.unmount()
   }
 }
 export default vueEditForm

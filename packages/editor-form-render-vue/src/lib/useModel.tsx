@@ -12,9 +12,11 @@ export function useModel<T>(getter: () => T, emitter: (val: T) => void) {
 
   return {
     get value() {
+      console.log('get 3132131321', state)
       return state.value;
     },
     set value(val: T) {
+      console.log('set 3132131321', val)
       if (state.value !== val) {
         state.value = val;
         emitter(val);
@@ -32,10 +34,7 @@ export const TestUseModel = defineComponent({
     "update:modelValue": (val?: string) => true,
   },
   setup(props, ctx) {
-    const model = useModel(
-      () => props.modelValue,
-      (val) => ctx.emit("update:modelValue", val)
-    );
+    const model = useModel(() => props.modelValue, newValue => ctx.emit('update:modelValue', newValue));
     return () => (
       <div>
         自定义输入框

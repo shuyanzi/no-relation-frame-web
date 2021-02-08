@@ -3,33 +3,71 @@ import './App.css';
 import vueForm from '@atome/editor-form-render-vue'
 import '@atome/editor-form-render-vue/dist/index.css'
 import jsonData from './data.json'
+import jsonData2 from './data2.json'
 
 function mountVue() {
-  vueForm?.mount('vue-content', {
+  const formData = {
+    name: 'admin',
+    projectName: 'projectName',
+    displayType: 'displayType',
+    releaseTime: 'releaseTime',
+
+  }
+  vueForm?.mount('vue-content1', {
     modelValue: jsonData,
-    formData: {
-      username: 'admin',
-    },
+    formData,
     customProps: {
-      // subBtn是组件标识
       submitButton: {
         onClick: () => {
-          console.log('onClick')
-          // this.$notify({ message: "执行表单数据校验及提交服务器的动作" });
+          console.log('onClick', vueForm['vue-content1'], formData)
         },
       },
       mySelect: {
         onChange: (val) => {
           console.log('onChange')
-          // this.$notify({ message: `食物发生变化: ${val}` });
+        },
+      },
+      submitCancel: {
+        onClick: (val) => {
+          console.log('submitCancel')
         },
       },
     },
-  })
+  }, true)
 }
-function unmountVue() {
-  vueForm?.app?.unmount()
+function mountVue2() {
+  const formData = {
+    name: 'admin',
+    projectName: 'KP',
+    displayType: 'ICON',
+    releaseTime: 'releaseTime',
+  }
+  vueForm?.mount('vue-content2', {
+    modelValue: jsonData2,
+    formData,
+    customProps: {
+      submitButton: {
+        onClick: () => {
+          console.log('onClick', vueForm['vue-content2'], formData)
+        },
+      },
+      mySelect: {
+        onChange: (val) => {
+          console.log('onChange')
+        },
+      },
+      submitCancel: {
+        onClick: (val) => {
+          console.log('submitCancel')
+        },
+      },
+    },
+  }, true)
 }
+function unmountVue(id) {
+  vueForm && vueForm[id]?.unmount()
+}
+
 function App() {
 
   return (
@@ -37,11 +75,16 @@ function App() {
       <header className="App-header">
         React Wrap
         <img src={logo} className="App-logo" alt="logo" />
-        <button onClick={mountVue}>挂载vue组件</button>
-        <button onClick={unmountVue}>销毁vue组件</button>
+        <button onClick={mountVue}>挂载vue组件1</button>
+        <button onClick={() => unmountVue('vue-content1')}>销毁vue组件1</button>
+        <button onClick={mountVue2}>挂载vue组件2</button>
+        <button onClick={() => unmountVue('vue-content2')}>销毁vue组件2</button>
       </header>
       <section className="vue-container">
-        <div id="vue-content"></div>
+        <div id="vue-content1"></div>
+      </section>
+      <section className="vue-container">
+        <div id="vue-content2"></div>
       </section>
     </div>
   );

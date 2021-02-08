@@ -1,0 +1,176 @@
+{
+  "container": {
+    "height": 700,
+    "width": 1000
+  },
+  "blocks": [
+    {
+      "componentKey": "text",
+      "focus": false,
+      "adjustPosition": false,
+      "top": 152,
+      "left": 255,
+      "width": 32,
+      "height": 22,
+      "zIndex": 100,
+      "props": {
+        "text": "Project Name"
+      },
+      "model": {}
+    },
+    {
+      "componentKey": "select",
+      "focus": false,
+      "adjustPosition": false,
+      "top": 143,
+      "left": 373.5,
+      "width": 225,
+      "height": 40,
+      "zIndex": 100,
+      "props": {
+        "options": [
+          {
+            "label": "kp",
+            "value": "KP"
+          },
+          {
+            "label": "atome",
+            "value": "ATOME"
+          }
+        ]
+      },
+      "model": {
+        "modelValue": "projectName",
+        "default": "projectName"
+      }
+    },
+    {
+      "componentKey": "text",
+      "focus": false,
+      "adjustPosition": false,
+      "top": 231,
+      "left": 263,
+      "width": 32,
+      "height": 22,
+      "zIndex": 100,
+      "props": {
+        "text": "Display Type"
+      },
+      "model": {}
+    },
+    {
+      "componentKey": "select",
+      "focus": false,
+      "adjustPosition": false,
+      "top": 222,
+      "left": 373.5,
+      "width": 225,
+      "height": 40,
+      "zIndex": 100,
+      "props": {
+        "options": [
+          {
+            "label": "banner",
+            "value": "BANNER"
+          },
+          {
+            "label": "icon",
+            "value": "ICON"
+          }
+        ]
+      },
+      "model": {
+        "modelValue": "displayType",
+        "default": "displayType"
+      }
+    },
+    {
+      "componentKey": "text",
+      "focus": false,
+      "adjustPosition": false,
+      "top": 308,
+      "left": 255,
+      "width": 32,
+      "height": 22,
+      "zIndex": 100,
+      "props": {
+        "text": "Release Time"
+      }
+    },
+    {
+      "componentKey": "datepicker",
+      "focus": false,
+      "adjustPosition": false,
+      "top": 299,
+      "left": 373.5,
+      "width": 225,
+      "height": 40,
+      "zIndex": 100,
+      "props": {},
+      "model": {
+        "modelValue": "releaseTime",
+        "default": "releaseTime"
+      }
+    },
+    {
+      "componentKey": "button",
+      "focus": false,
+      "adjustPosition": false,
+      "top": 393,
+      "left": 473.5,
+      "width": 68,
+      "height": 32,
+      "zIndex": 100,
+      "props": {
+        "label": "submit",
+        "type": "primary",
+        "plain": true
+      },
+      "model": {},
+      "slotName": "submitButton"
+    },
+    {
+      "componentKey": "button",
+      "focus": false,
+      "adjustPosition": false,
+      "top": 393,
+      "left": 373.5,
+      "width": 68,
+      "height": 32,
+      "zIndex": 100,
+      "props": {
+        "label": "cancel"
+      },
+      "model": {},
+      "slotName": "submitCancel"
+    },
+    {
+      "componentKey": "text",
+      "focus": false,
+      "adjustPosition": false,
+      "top": 90,
+      "left": 307,
+      "width": 32,
+      "height": 22,
+      "zIndex": 100,
+      "props": {
+        "text": "Name"
+      },
+      "model": {}
+    },
+    {
+      "componentKey": "input",
+      "focus": false,
+      "adjustPosition": false,
+      "top": 81,
+      "left": 373.5,
+      "width": 225,
+      "height": 40,
+      "zIndex": 100,
+      "props": {},
+      "model": {
+        "default": "name"
+      }
+    }
+  ]
+}

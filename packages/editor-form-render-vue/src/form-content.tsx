@@ -2,6 +2,7 @@ import { computed, defineComponent, PropType } from 'vue';
 import { ModelValue } from './interfaces/model-value';
 import { FormBlock } from './packages/form-block';
 import { visualConfig } from './lib/config';
+import { useModel, TestUseModel } from './lib/useModel';
 
 const FormContent = defineComponent({
   name: 'AFormContent',
@@ -11,8 +12,12 @@ const FormContent = defineComponent({
     // 自定义事件
     customProps: { type: Object as PropType<Record<string, any>> },
   },
+  emits: {
+    'update:modelValue': (val?: ModelValue) => true,
+  },
   setup(props, ctx) {
     const { modelValue } = props
+    const dataModel = useModel(() => props.modelValue, val => ctx.emit('update:modelValue', val))
     const containerStyles = computed(() => ({
       width: `${modelValue.container.width}px`,
       height: `${modelValue.container.height}px`
@@ -23,8 +28,9 @@ const FormContent = defineComponent({
       return (
         <div class='form-container' style={containerStyles.value}>
           vue component 来了~~~~
-          {!!modelValue.blocks && (
-            modelValue.blocks.map((block, index) => (
+          <TestUseModel></TestUseModel>
+          {!!dataModel.value.blocks && (
+            dataModel.value.blocks.map((block, index) => (
               <FormBlock
                 block={block}
                 key={index}
