@@ -21,6 +21,7 @@ export const FormBlock = defineComponent({
       required: true,
     },
     customProps: { type: Object as PropType<Record<string, any>> },
+    formDataChange: { type: Function, required: true }
   },
   setup(props) {
     const el = ref({} as HTMLDivElement);
@@ -56,8 +57,6 @@ export const FormBlock = defineComponent({
       const component = props.config?.componentMap[props.block!.componentKey];
       const formData = props.formData as Record<string, any>;
       let render: any;
-      console.log('props.block')
-      console.log(props.block, props.block.slotName, props.slots)
       if (props.block?.slotName && props.slots[props.block.slotName]) {
         render = props.slots[props.block.slotName]!();
       } else {
@@ -72,15 +71,13 @@ export const FormBlock = defineComponent({
           /**@ts-ignore */
           model: Object.keys(component.model || {}).reduce((prev, propName) => {
             const modelName = !props.block?.model ? null : props.block?.model[propName];
-            console.log('12312;', {model: props.block?.model, propName, aa: props.formData,bb: props.formData[modelName], cc: props.formData[modelName], modelName})
             prev[propName] = {
               [propName === "default" ? "modelValue" : propName]: props.formData[modelName],
               [propName === "default" ? "onUpdate:modelValue" : "onChange"]: (val: any) => {
-                console.log('update', val)
+                props.formDataChange(modelName, { oldValue: formData[modelName], newValue: val })
                 formData[modelName] = val
               },
             };
-            console.log({modelName,propName, prev})
             return prev;
           }, {} as Record<string, any>),
           custom:

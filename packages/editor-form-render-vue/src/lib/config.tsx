@@ -32,10 +32,10 @@ visualConfig.registry("text", {
 });
 
 visualConfig.registry("button", {
-  label: "按钮",
-  preview: () => <ElButton>按钮</ElButton>,
-  render: ({ props, size, custom }) => (
-    <ElButton
+  label: "button",
+  preview: () => <ElButton>Button</ElButton>,
+  render: ({ props, size, custom }) => {
+    return <ElButton
       {...custom}
       type={props.type}
       size={props.size}
@@ -44,12 +44,12 @@ visualConfig.registry("button", {
         height: size.height ? `${size.height}px` : undefined,
       }}
     >
-      {props.text || "按钮"}
+      {props.label || "button"}
     </ElButton>
-  ),
+  },
   resize: { width: true, height: true },
   props: {
-    text: createEditorInputProps("显示文本"),
+    label: createEditorInputProps("button"),
     type: createEditorSelectProps("按钮类型", [
       { label: "基础", val: "primary" },
       { label: "成功", val: "success" },
@@ -96,7 +96,6 @@ visualConfig.registry("input", {
   label: "输入框",
   preview: () => <ElInput modelValue={""} />,
   render: ({ model, size, custom }) => {
-    console.log('input:', model.default)
     return (
       <ElInput
         {...custom}
@@ -123,7 +122,6 @@ visualConfig.registry("select", {
   label: "下拉框",
   preview: () => <ElSelect></ElSelect>,
   render: ({ props, model, custom }) => {
-    console.log('select:', custom, model)
     return <ElSelect key={Math.random()} {...custom} {...model.default}>
       {(props.options || []).map(
         (

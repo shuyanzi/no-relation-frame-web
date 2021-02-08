@@ -1,7 +1,7 @@
 {
   "container": {
-    "height": 700,
-    "width": 1000
+    "height": 400,
+    "width": 700
   },
   "blocks": [
     {
@@ -32,7 +32,7 @@
       "componentKey": "button",
       "focus": false,
       "adjustPosition": false,
-      "top": 572,
+      "top": 380,
       "left": 426.5,
       "width": 56,
       "height": 32,
@@ -40,7 +40,7 @@
       "props": {
         "type": "primary",
         "size": "small",
-        "label": "提交"
+        "label": "submit"
       },
       "model": {},
       "slotName": "submitButton"
@@ -55,7 +55,7 @@
       "height": 21,
       "zIndex": 100,
       "props": {
-        "text": "普通文本框"
+        "text": "Location name"
       },
       "model": {}
     },
@@ -155,7 +155,7 @@
       "height": 21,
       "zIndex": 100,
       "props": {
-        "text": "数字输入框"
+        "text": "Voucher count"
       },
       "model": {}
     },
@@ -169,7 +169,7 @@
       "height": 21,
       "zIndex": 100,
       "props": {
-        "text": "下拉选择"
+        "text": "User Label"
       },
       "model": {}
     },
@@ -183,7 +183,7 @@
       "height": 21,
       "zIndex": 100,
       "props": {
-        "text": "日期选择"
+        "text": "Time begin"
       },
       "model": {}
     },
@@ -212,7 +212,7 @@
       "height": 21,
       "zIndex": 100,
       "props": {
-        "text": "数字范围选择"
+        "text": "Range"
       },
       "model": {}
     },
@@ -228,76 +228,18 @@
       "props": {
         "options": [
           {
-            "label": "经销商 ",
-            "value": "dealer"
+            "label": "Platform ",
+            "value": "platform"
           },
           {
-            "label": "门店",
-            "value": "store"
+            "label": "Shop",
+            "value": "shop"
           }
         ]
       },
       "model": {
         "modelValue": "anntType"
       }
-    },
-    {
-      "componentKey": "text",
-      "focus": false,
-      "adjustPosition": false,
-      "top": 368.5,
-      "left": 282,
-      "width": 80,
-      "height": 21,
-      "zIndex": 100,
-      "props": {
-        "text": "作用域插槽"
-      },
-      "model": {}
-    },
-    {
-      "componentKey": "input",
-      "focus": false,
-      "adjustPosition": false,
-      "top": 359,
-      "left": 426.5,
-      "width": 199,
-      "height": 40,
-      "zIndex": 100,
-      "props": {},
-      "model": {
-        "modelValue": "username"
-      },
-      "slotName": "editUsername"
-    },
-    {
-      "componentKey": "text",
-      "focus": false,
-      "adjustPosition": false,
-      "top": 434.5,
-      "left": 282,
-      "width": 32,
-      "height": 21,
-      "zIndex": 100,
-      "props": {
-        "text": "监听Change事件"
-      },
-      "model": {}
-    },
-    {
-      "componentKey": "input",
-      "focus": false,
-      "adjustPosition": false,
-      "top": 425,
-      "left": 426.5,
-      "width": 218,
-      "height": 40,
-      "zIndex": 100,
-      "props": {},
-      "model": {
-        "modelValue": "text"
-      },
-      "slotName": "changeField"
     },
     {
       "componentKey": "image",
