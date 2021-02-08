@@ -1,7 +1,10 @@
+// import fs from 'fs'
 import path from 'path'
 import typescript from 'rollup-plugin-typescript2'
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs';
+import scss from 'rollup-plugin-scss'
+// import sass from 'rollup-plugin-sass';
 
 if (!process.env.TARGET) {
   throw new Error('TARGET package must be specified via --environment flag.')
@@ -103,7 +106,26 @@ function createConfig(format, output, plugins = []) {
           '@babel/plugin-proposal-class-properties'
         ]
       }),
-      commonjs()
+      commonjs(),
+      scss({
+        output: resolve(`dist/index.css`),
+      }),
+      // sass({
+      //   output(styles, styleNodes) {
+      //     if (styleNodes && styleNodes.length) {
+      //       styleNodes.forEach((info) => {
+      //         const { id, content } = info
+      //         const thePath = path.relative(`./packages/${name}/src`, id).replace('scss', 'css')
+      //         fsExtra.ensureFileSync(`./packages/${name}/dist/${thePath}`, function (err) {
+      //           if (err) {
+      //             throw err;
+      //           }
+      //         });
+      //         fs.writeFileSync(`./packages/${name}/dist/${thePath}`, content);
+      //       });
+      //     }
+      //   }
+      // }),
     ]
   }
 }

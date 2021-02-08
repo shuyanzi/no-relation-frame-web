@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import vueForm from '@atome/editor-form-render-vue'
+import '@atome/editor-form-render-vue/dist/index.css'
 import jsonData from './data.json'
 
 function mountVue() {

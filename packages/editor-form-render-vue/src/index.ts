@@ -2,13 +2,13 @@ import { createApp } from 'vue'
 import FormContent from './form-content'
 import ElementPlus from 'element-plus';
 import 'element-plus/lib/theme-chalk/index.css';
-// import './styles/index.scss';
-// import { ModelValue } from './interfaces/model-value';
+import './styles/index.scss';
+import { ModelValue } from './interfaces/model-value';
 
 const vueEditForm: any = {
   app: null,
-  // mount: (elem: any, modelValue: ModelValue) => {
-  mount: (elem: any, modelValue: any) => {
+  mount: (elem: any, modelValue: ModelValue) => {
+  // mount: (elem: any, modelValue: any) => {
     if (document.getElementById(elem)?.innerHTML) {
       return
     }
