@@ -1,7 +1,5 @@
 import { computed, defineComponent, PropType } from 'vue';
 import { ModelValue } from './interfaces/model-value';
-// import { BlockData, ModelValue } from './interfaces/model-value';
-// import { VisualEditorConfig } from './lib/utils';
 import { FormBlock } from './packages/form-block';
 import { visualConfig } from './lib/config';
 
@@ -9,9 +7,11 @@ const FormContent = defineComponent({
   name: 'AFormContent',
   props: {
     modelValue: {type: Object as PropType<ModelValue>, required: true},
-    // config: {type: Object as PropType<VisualEditorConfig>, required: true},
+    formData: { type: Object as PropType<Record<string, any>>, required: true },
+    // 自定义事件
+    customProps: { type: Object as PropType<Record<string, any>> },
   },
-  setup(props, { slots }) {
+  setup(props, ctx) {
     const { modelValue } = props
     const containerStyles = computed(() => ({
       width: `${modelValue.container.width}px`,
@@ -26,11 +26,17 @@ const FormContent = defineComponent({
           {!!modelValue.blocks && (
             modelValue.blocks.map((block, index) => (
               <FormBlock
-                config={visualConfig}
                 block={block}
                 key={index}
+                config={visualConfig}
+                formData={props.formData}
+                slots={ctx.slots}
+                customProps={props.customProps}
                 // {...{
-                //     onMousedown: (e: MouseEvent) => focusHandler.block.onMousedown(e, block)
+                //   onMousedown: (e: MouseEvent) =>
+                //     focusHandler.block.onMousedown(e, block, index),
+                //   onContextmenu: (e: MouseEvent) =>
+                //     handler.onContextmenuBlock(e, block),
                 // }}
               />
             ))

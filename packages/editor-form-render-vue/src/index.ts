@@ -7,12 +7,17 @@ import { ModelValue } from './interfaces/model-value';
 
 const vueEditForm: any = {
   app: null,
-  mount: (elem: any, modelValue: ModelValue) => {
-  // mount: (elem: any, modelValue: any) => {
+  mount: (elem: any, data: {
+    modelValue: ModelValue,
+    formData: Record<string, any>,
+    customProps: Record<string, any>,
+  }) => {
     if (document.getElementById(elem)?.innerHTML) {
+      console.log('this element has mounted!')
       return
     }
-    const app = createApp(FormContent, { modelValue });
+    console.log({ data })
+    const app = createApp(FormContent, data);
     vueEditForm.app = app
     app.use(ElementPlus);
     app.mount(`#${elem}`)

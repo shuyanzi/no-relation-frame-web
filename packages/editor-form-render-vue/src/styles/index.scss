@@ -1,4 +1,29 @@
 .form-container {
   position: relative;
-  background-color: aquamarine;
+}
+$primary: #409eff;
+.editor-block {
+  $space: -3px;
+  position: absolute;
+
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   top: $space;
+  //   bottom: $space;
+  //   left: $space;
+  //   right: $space;
+  // }
+
+  &.editor-block-focus {
+    &::after {
+      content: '';
+      position: absolute;
+      top: $space;
+      bottom: $space;
+      left: $space;
+      right: $space;
+      border: dashed 1px $primary;
+    }
+  }
 }
