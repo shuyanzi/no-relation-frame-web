@@ -6,7 +6,8 @@ before_install:
 install:
   - yarn install
 script:
-npm run build
+  - yarn build
+  - yarn workspace react-app-demo build
 deploy:
   provider: pages
   skip_cleanup: true
