@@ -12,7 +12,7 @@ const vueEditForm: any = {
     customProps: Record<string, any>,
   }, {
     forceUpdate = false,
-    formDataChange = (key: string, { oldValue, newValue }) => {
+    formDataChangeCb = (key: string, { oldValue, newValue }) => {
       console.log('in Vue: form data changed!')
       console.log({ key, oldValue, newValue })
     }
@@ -26,8 +26,8 @@ const vueEditForm: any = {
         return
       }
     }
-    // data.formData._update = data.formData._update || vueEditForm.formDataChange(elem)
-    const app = createApp(FormContent, { ...data, formDataChange });
+    // data.formData._update = data.formData._update || vueEditForm.formDataChangeCb(elem)
+    const app = createApp(FormContent, { ...data, formDataChangeCb });
     vueEditForm[elem] = app
     app.use(ElementPlus);
     app.mount(`#${elem}`)
@@ -36,7 +36,7 @@ const vueEditForm: any = {
   unmount: (elem: any) => {
     vueEditForm[elem]?.unmount()
   },
-  formDataChange: (elem: any) => {
+  formDataChangeCb: (elem: any) => {
     return (formData: any) => {
       console.log('13221', vueEditForm[elem], formData, true)
       vueEditForm.mount(elem, { ...vueEditForm[elem]._props, formData }, {
@@ -44,7 +44,7 @@ const vueEditForm: any = {
       })
     }
   },
-  // formDataChange: (elem: any) => {
+  // formDataChangeCb: (elem: any) => {
   //   return (formData: any) => {
   //     console.log('13221', vueEditForm[elem], formData, true)
   //     vueEditForm.mount(elem, {formData}, {

@@ -1,3 +1,4 @@
+import { Rules } from 'async-validator'
 export interface ModelValue {
   container: {
     width: number;
@@ -19,4 +20,5 @@ export interface BlockData {
   props: Record<string, any>; // 组件的设计属性
   model: Record<string, any>; // 绑定的字段
   slotName?: string; // 组件唯一标识
+  rules?: Rules; // 组件验证规则
 }

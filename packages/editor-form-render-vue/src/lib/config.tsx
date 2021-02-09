@@ -7,6 +7,7 @@ import {
   createEditorTableProp,
 } from "./props";
 import { NumberRange } from "../components/number-range";
+import { FormItemType } from "../enums/common";
 
 const [ElInput]: any[] = [Input];
 
@@ -92,7 +93,7 @@ visualConfig.registry("number", {
     ]),
   },
 });
-visualConfig.registry("input", {
+visualConfig.registry(FormItemType.input, {
   label: "输入框",
   preview: () => <ElInput modelValue={""} />,
   render: ({ model, size, custom }) => {
@@ -118,7 +119,7 @@ visualConfig.registry("input", {
   },
 });
 
-visualConfig.registry("select", {
+visualConfig.registry(FormItemType.select, {
   label: "下拉框",
   preview: () => <ElSelect></ElSelect>,
   render: ({ props, model, custom }) => {

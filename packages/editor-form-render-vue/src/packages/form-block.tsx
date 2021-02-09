@@ -3,6 +3,7 @@ import { BlockData } from '../interfaces/model-value';
 import {
   VisualEditorConfig
 } from '../lib/utils';
+import { FormItemWrap } from '../components/form-item-wrap'
 
 export const FormBlock = defineComponent({
   name: 'FormBlock',
@@ -21,7 +22,7 @@ export const FormBlock = defineComponent({
       required: true,
     },
     customProps: { type: Object as PropType<Record<string, any>> },
-    formDataChange: { type: Function, required: true }
+    formDataChangeCb: { type: Function, required: true }
   },
   setup(props) {
     const el = ref({} as HTMLDivElement);
@@ -74,7 +75,7 @@ export const FormBlock = defineComponent({
             prev[propName] = {
               [propName === "default" ? "modelValue" : propName]: props.formData[modelName],
               [propName === "default" ? "onUpdate:modelValue" : "onChange"]: (val: any) => {
-                props.formDataChange(modelName, { oldValue: formData[modelName], newValue: val })
+                props.formDataChangeCb(modelName, { oldValue: formData[modelName], newValue: val })
                 formData[modelName] = val
               },
             };
@@ -88,7 +89,9 @@ export const FormBlock = defineComponent({
       }
       return (
         <div class={classes.value} style={style.value} ref={el}>
-          {render}
+          <FormItemWrap block={props.block}>
+            {render}
+          </FormItemWrap>
         </div>
       );
     };
