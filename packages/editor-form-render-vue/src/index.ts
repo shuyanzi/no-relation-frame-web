@@ -4,6 +4,7 @@ import ElementPlus from 'element-plus';
 import 'element-plus/lib/theme-chalk/index.css';
 import './styles/index.scss';
 import { ModelValue } from './interfaces/model-value';
+import { EventEmitter } from './lib/event-emitter';
 
 const vueEditForm: any = {
   mount: (elem: any, data: {
@@ -26,31 +27,16 @@ const vueEditForm: any = {
         return
       }
     }
-    // data.formData._update = data.formData._update || vueEditForm.formDataChangeCb(elem)
-    const app = createApp(FormContent, { ...data, formDataChangeCb });
+    const event = new EventEmitter()
+
+    const app = createApp(FormContent, { ...data, formDataChangeCb, elem, modelValueEvent: event });
     vueEditForm[elem] = app
     app.use(ElementPlus);
     app.mount(`#${elem}`)
-    return app
+    return { ...app, modelValueEvent: event }
   },
   unmount: (elem: any) => {
     vueEditForm[elem]?.unmount()
   },
-  formDataChangeCb: (elem: any) => {
-    return (formData: any) => {
-      console.log('13221', vueEditForm[elem], formData, true)
-      vueEditForm.mount(elem, { ...vueEditForm[elem]._props, formData }, {
-        forceUpdate: true
-      })
-    }
-  },
-  // formDataChangeCb: (elem: any) => {
-  //   return (formData: any) => {
-  //     console.log('13221', vueEditForm[elem], formData, true)
-  //     vueEditForm.mount(elem, {formData}, {
-  //       forceUpdate: true
-  //     })
-  //   }
-  // },
 }
 export default vueEditForm

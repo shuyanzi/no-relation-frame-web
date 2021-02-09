@@ -51,15 +51,13 @@ function mountVue2() {
     displayType: 'ICON',
     releaseTime: new Date(2016, 9, 10, 8, 40),
   }
-  const modelValue = jsonData2;
+  let modelValue = JSON.parse(JSON.stringify(jsonData2));
   form2 = vueForm?.mount('vue-content2', {
     modelValue,
     formData,
     customProps: {
       submitButton: {
         onClick: () => {
-          console.log('modelValue', modelValue)
-          modelValue.container.height = '20px'
           formData.formRef.value.validate((valid) => {
             if (valid) {
               console.log('submit!');
@@ -85,8 +83,21 @@ function mountVue2() {
   }, {
     forceUpdate: true,
     formDataChangeCb: (key, { oldValue, newValue }) => {
-      console.log('React receive form data from vue!')
-      console.log({ formData, key, oldValue, newValue })
+      if (key === 'projectName') {
+        if (newValue === 'ATOME') {
+          jsonData2.blocks.forEach((block, index) => {
+            if ((block.model.modelValue || block.model.default) === 'displayType') {
+              modelValue.blocks.splice(index, 1)
+              modelValue = JSON.parse(JSON.stringify(modelValue));
+              form2.modelValueEvent.$emit('vue-content2:update-model-value', modelValue)
+            }
+          })
+          console.log(modelValue, jsonData2)
+        } else {
+          modelValue = JSON.parse(JSON.stringify(jsonData2));
+          form2.modelValueEvent.$emit('vue-content2:update-model-value', modelValue)
+        }
+      }
     }
   })
 }
