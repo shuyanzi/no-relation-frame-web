@@ -11,10 +11,16 @@ export const FormItemWrap = defineComponent({
   },
   setup({ block }, { slots }) {
     const modelName = !block?.model ? null : block?.model.modelValue || block?.model.default || null;
+    const props = block.label ? {
+      label: block.label,
+      labelWidth: '120px'
+    } : {
+      labelWidth: '0'
+    }
 
     return () => {
       if (FormItemType[block.componentKey]) {
-        return <el-form-item prop={modelName} label-width="0">{slots.default()}</el-form-item>
+        return <el-form-item prop={modelName} {...props}>{slots.default()}</el-form-item>
       } else {
         return slots.default()
       }

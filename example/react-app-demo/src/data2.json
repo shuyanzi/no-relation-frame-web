@@ -5,20 +5,6 @@
   },
   "blocks": [
     {
-      "componentKey": "text",
-      "focus": false,
-      "adjustPosition": false,
-      "top": 152,
-      "left": 255,
-      "width": 32,
-      "height": 22,
-      "zIndex": 100,
-      "props": {
-        "text": "Project Name"
-      },
-      "model": {}
-    },
-    {
       "componentKey": "select",
       "focus": false,
       "adjustPosition": false,
@@ -42,21 +28,8 @@
       "model": {
         "modelValue": "projectName",
         "default": "projectName"
-      }
-    },
-    {
-      "componentKey": "text",
-      "focus": false,
-      "adjustPosition": false,
-      "top": 231,
-      "left": 263,
-      "width": 32,
-      "height": 22,
-      "zIndex": 100,
-      "props": {
-        "text": "Display Type"
       },
-      "model": {}
+      "label": "Project Name"
     },
     {
       "componentKey": "select",
@@ -82,21 +55,10 @@
       "model": {
         "modelValue": "displayType",
         "default": "displayType"
-      }
+      },
+      "label": "Display Type"
     },
-    {
-      "componentKey": "text",
-      "focus": false,
-      "adjustPosition": false,
-      "top": 308,
-      "left": 255,
-      "width": 32,
-      "height": 22,
-      "zIndex": 100,
-      "props": {
-        "text": "Release Time"
-      }
-    },
+
     {
       "componentKey": "datepicker",
       "focus": false,
@@ -110,14 +72,15 @@
       "model": {
         "modelValue": "releaseTime",
         "default": "releaseTime"
-      }
+      },
+      "label": "Release Time"
     },
     {
       "componentKey": "button",
       "focus": false,
       "adjustPosition": false,
       "top": 393,
-      "left": 473.5,
+      "left": 500,
       "width": 68,
       "height": 32,
       "zIndex": 100,
@@ -134,7 +97,7 @@
       "focus": false,
       "adjustPosition": false,
       "top": 393,
-      "left": 373.5,
+      "left": 390,
       "width": 68,
       "height": 32,
       "zIndex": 100,
@@ -143,20 +106,6 @@
       },
       "model": {},
       "slotName": "submitCancel"
-    },
-    {
-      "componentKey": "text",
-      "focus": false,
-      "adjustPosition": false,
-      "top": 90,
-      "left": 307,
-      "width": 32,
-      "height": 22,
-      "zIndex": 100,
-      "props": {
-        "text": "Name"
-      },
-      "model": {}
     },
     {
       "componentKey": "input",
@@ -174,7 +123,8 @@
       "rules": [
         { "required": true, "message": "Please input name!", "trigger": "blur" },
         { "min": 5, "max": 15, "message": "Please enter 3-5 digit name", "trigger": "blur" }
-      ]
+      ],
+      "label": "Name"
     }
   ]
 }

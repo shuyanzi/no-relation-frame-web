@@ -21,4 +21,5 @@ export interface BlockData {
   model: Record<string, any>; // 绑定的字段
   slotName?: string; // 组件唯一标识
   rules?: Rules; // 组件验证规则
+  label?: string; // 组件前边的文案（for el-form-item）
 }
