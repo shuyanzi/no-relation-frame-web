@@ -5,6 +5,9 @@ import 'element-plus/lib/theme-chalk/index.css';
 import './styles/index.scss';
 import { ModelValue } from './interfaces/model-value';
 import { EventEmitter } from './lib/event-emitter';
+export { createNewBlock } from './lib/utils';
+export { visualConfig } from './lib/config';
+export { FormBlock } from './packages/form-block';
 
 const vueEditForm: any = {
   mount: (elem: any, data: {
@@ -40,3 +43,4 @@ const vueEditForm: any = {
   },
 }
 export default vueEditForm
+

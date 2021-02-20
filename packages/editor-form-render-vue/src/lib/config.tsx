@@ -34,7 +34,7 @@ visualConfig.registry("text", {
 
 visualConfig.registry("button", {
   label: "button",
-  preview: () => <ElButton>Button</ElButton>,
+  preview: () => <ElButton size="mini">Button</ElButton>,
   render: ({ props, size, custom }) => {
     return <ElButton
       {...custom}
@@ -95,7 +95,7 @@ visualConfig.registry("number", {
 });
 visualConfig.registry(FormItemType.input, {
   label: "输入框",
-  preview: () => <ElInput modelValue={""} />,
+  preview: () => <ElInput modelValue={""} size="small" />,
   render: ({ model, size, custom }) => {
     return (
       <ElInput
@@ -121,7 +121,7 @@ visualConfig.registry(FormItemType.input, {
 
 visualConfig.registry(FormItemType.select, {
   label: "下拉框",
-  preview: () => <ElSelect></ElSelect>,
+  preview: () => <ElSelect size="small"></ElSelect>,
   render: ({ props, model, custom }) => {
     return <ElSelect key={Math.random()} {...custom} {...model.default}>
       {(props.options || []).map(
@@ -201,7 +201,7 @@ visualConfig.registry("image", {
 });
 visualConfig.registry("datepicker", {
     label: "时间选择",
-    preview: () => <ElTimePicker></ElTimePicker>,
+    preview: () => <ElTimePicker size="small"></ElTimePicker>,
     render: ({ props, model, custom }) => (
       <ElTimePicker key={Math.random()} {...custom} {...model.default}></ElTimePicker>
     ),

@@ -1,4 +1,4 @@
-import { computed, defineComponent, onMounted, PropType, ref, Slot } from 'vue';
+import { computed, defineComponent, onMounted, PropType, ref } from 'vue';
 import { BlockData } from '../interfaces/model-value';
 import {
   VisualEditorConfig
@@ -18,7 +18,7 @@ export const FormBlock = defineComponent({
     },
     formData: { type: Object as PropType<Record<string, any>>, required: true },
     slots: {
-      type: Object as PropType<Record<string, Slot | undefined>>,
+      type: Object as PropType<Record<string, any>>,
       required: true,
     },
     customProps: { type: Object as PropType<Record<string, any>> },
@@ -35,9 +35,9 @@ export const FormBlock = defineComponent({
     ])
     
     const style = computed(() => ({
-      top: `${props.block?.top}px`,
-      left: `${props.block?.left}px`,
-      zIndex: props.block.zIndex
+      // top: `${props.block?.top}px`,
+      // left: `${props.block?.left}px`,
+      // zIndex: props.block.zIndex
     }));
 
     onMounted(() => {

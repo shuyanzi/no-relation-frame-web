@@ -40,8 +40,8 @@ const FormContent = defineComponent({
     return () => {
       return (
         <div class='form-container' style={{
-          width: `${dataModel.value.container.width}px`,
-          height: `${dataModel.value.container.height}px`
+          // width: `${dataModel.value.container.width}px`,
+          // height: `${dataModel.value.container.height}px`
         }}>
           vue component 来了~~~~
           {!!dataModel.value.blocks && (
